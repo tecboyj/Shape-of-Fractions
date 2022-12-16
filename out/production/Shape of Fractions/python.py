@@ -51,8 +51,22 @@ def draw_number(ax, n):
     # Return the coords than have been plotted.
     return coords
 
-if  __name__ == '__main__':
-    ax = plt.subplot(111)
-    inputNum = int(sys.argv[1])
-    inputDenom = int(sys.argv[2])
-    print(draw_number(ax, inputNum/inputDenom))
+
+ax = plt.subplot(111)
+inputNum = int(sys.argv[1])
+inputDenom = int(sys.argv[2])
+print(draw_number(ax, inputNum/inputDenom))
+coords = draw_number(ax, inputNum/inputDenom)
+"""
+x_sub = []
+y_sub = []
+for value in coords:
+    x_sub.append(value[0])
+    y_sub.append(value[1])
+    
+x = np.array([x_sub])
+y = np.array([y_sub])
+
+plt.plot(x, y)
+plt.show()
+"""
