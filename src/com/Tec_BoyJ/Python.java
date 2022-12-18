@@ -1,11 +1,15 @@
 package com.Tec_BoyJ;
 
+import com.Tec_BoyJ.Graphing.JavaGraph;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
+
+import static com.Tec_BoyJ.Main.GUISource;
 
 public class Python {
     static Python python;
@@ -14,11 +18,11 @@ public class Python {
 
     public Python(String command) throws IOException {
         this.process = Runtime.getRuntime().exec(command);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            process.destroy();
+        }));
     }
 
-    public static void terminate() {
-        python.process.destroy();
-    }
     public static void python(String command) throws IOException {
         python = new Python(command);
 
@@ -44,17 +48,22 @@ public class Python {
             i--;
         }
 
-        String[] arr1 = new String[arr.length];
-        String[] arr2 = new String[arr.length];
+        String[] arrX = new String[arr.length];
+        String[] arrY = new String[arr.length];
         for (int j = 0; j < arr.length; j++) {
-            arr1[j] = arr[j][0];
-            arr2[j] = arr[j][1];
+            arrX[j] = arr[j][0];
+            arrY[j] = arr[j][1];
         }
-        /*
-        FileWriter myWriter = new FileWriter("/home/jc515081/Coding/Java/ShapeOfFractions/res/arrays.txt");
-        myWriter.write(Arrays.toString(arr1) + "\n" + Arrays.toString(arr2));
-        myWriter.close();
 
-         */
+        if (GUISource == 1) {
+            write(arrX, arrY);
+            //new DesmosGraph();
+        }
+        if (GUISource == 2) new JavaGraph(arrX, arrY);
+    }
+    public static void write(String[] arrX, String[] arrY) throws IOException {
+        FileWriter myWriter = new FileWriter("/home/jc515081/Coding/Java/ShapeOfFractions/res/arrays.txt");
+        myWriter.write(Arrays.toString(arrX) + "\n" + Arrays.toString(arrY));
+        myWriter.close();
     }
 }

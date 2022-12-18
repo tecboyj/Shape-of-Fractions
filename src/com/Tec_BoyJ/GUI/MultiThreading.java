@@ -1,4 +1,6 @@
-package com.Tec_BoyJ;
+package com.Tec_BoyJ.GUI;
+
+import com.Tec_BoyJ.Main;
 
 import java.io.IOException;
 
@@ -9,10 +11,6 @@ public class MultiThreading extends Thread {
     public MultiThreading(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-    public void terminate() {
-        Python.terminate();
-        this.interrupt();
     }
 
     @Override

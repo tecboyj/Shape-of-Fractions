@@ -1,4 +1,4 @@
-package com.Tec_BoyJ;
+package com.Tec_BoyJ.Graphing;
 
 import javax.swing.*;
 import java.io.File;
