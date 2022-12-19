@@ -13,6 +13,7 @@ import static com.Tec_BoyJ.Main.GUISource;
 
 public class Python {
     static Python python;
+    public static float[] arrX, arrY;
 
     Process process;
 
@@ -48,20 +49,20 @@ public class Python {
             i--;
         }
 
-        String[] arrX = new String[arr.length];
-        String[] arrY = new String[arr.length];
+        arrX = new float[arr.length];
+        arrY = new float[arr.length];
         for (int j = 0; j < arr.length; j++) {
-            arrX[j] = arr[j][0];
-            arrY[j] = arr[j][1];
+            arrX[j] = Float.parseFloat(arr[j][0]);
+            arrY[j] = Float.parseFloat(arr[j][1]);
         }
 
         if (GUISource == 1) {
             write(arrX, arrY);
             //new DesmosGraph();
         }
-        if (GUISource == 2) new JavaGraph(arrX, arrY);
+        if (GUISource == 2) new JavaGraph();
     }
-    public static void write(String[] arrX, String[] arrY) throws IOException {
+    public static void write(float[] arrX, float[] arrY) throws IOException {
         FileWriter myWriter = new FileWriter("/home/jc515081/Coding/Java/ShapeOfFractions/res/arrays.txt");
         myWriter.write(Arrays.toString(arrX) + "\n" + Arrays.toString(arrY));
         myWriter.close();

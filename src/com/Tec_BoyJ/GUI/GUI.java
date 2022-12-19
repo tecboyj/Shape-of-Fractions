@@ -19,7 +19,7 @@ public class GUI {
 
     JButton button = new JButton("GO!");
 
-    FractionButton b1d23 = new FractionButton(1/200, 1, 23);
+    FractionButton b1d23 = new FractionButton(200, 1, 23);
     FractionButton b1d365 = new FractionButton(250, 1, 365);
     FractionButton b1d47 = new FractionButton(300, 1, 47);
     FractionButton b1d3 = new FractionButton(350, 1, 3);
