@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Main {
     static getPythonFile main = new getPythonFile("/Python/python.py");
-    static File file = new File("Python/python.py");
+    //static File file = new File("python.py");
     public static int GUISource = 0;
 
     public static void main(String[] args) {
