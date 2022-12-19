@@ -19,14 +19,14 @@ public class GUI {
 
     JButton button = new JButton("GO!");
 
-    FractionButton b23 = new FractionButton("1/23", 200, 1, 23);
-    FractionButton b365 = new FractionButton("1/365", 250, 1, 365);
-    FractionButton b47 = new FractionButton("1/47", 300, 1, 47);
-    FractionButton b3 = new FractionButton("1/3", 350, 1, 3);
-    FractionButton b2d49 = new FractionButton("2/49", 400, 2, 49);
-    FractionButton b100d49 = new FractionButton("100/49", 450, 100, 49);
-    FractionButton b3d7 = new FractionButton("3/7", 500, 3, 7);
-    FractionButton b56d43 = new FractionButton("56/43", 550, 56, 43);
+    FractionButton b1d23 = new FractionButton(1/200, 1, 23);
+    FractionButton b1d365 = new FractionButton(250, 1, 365);
+    FractionButton b1d47 = new FractionButton(300, 1, 47);
+    FractionButton b1d3 = new FractionButton(350, 1, 3);
+    FractionButton b2d49 = new FractionButton(400, 2, 49);
+    FractionButton b100d49 = new FractionButton(450, 100, 49);
+    FractionButton b3d7 = new FractionButton(500, 3, 7);
+    FractionButton b56d43 = new FractionButton(550, 56, 43);
 
     JLabel labelGUI = new JLabel("GUI Interface");
     JButton GUI = new JButton("Python");
@@ -106,11 +106,11 @@ public class GUI {
     public class FractionButton extends JButton implements ActionListener {
         int num;
         int den;
-        public FractionButton(String buttonName, int yValue, int num, int den) {
+        public FractionButton(int yValue, int num, int den) {
             this.num = num;
             this.den = den;
 
-            this.setText(buttonName);
+            this.setText(num + "/" + den);
             this.addActionListener(this);
             this.setBounds(380, yValue, 240, 40);
             this.setFont(new Font("Arial", Font.PLAIN, 24));
