@@ -20,7 +20,6 @@ public class Main {
         //String command = "python3 " + file.getAbsolutePath() + " " + x + " " + y;
         if (GUISource == 0) command = command.replace("Python/python.py", "Python/pythonGUI.py");
         Python.python(command);
-        //if (GUISource == 1) new DesmosGraph();
     }
 
 

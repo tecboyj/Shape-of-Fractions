@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import static com.Tec_BoyJ.Main.GUISource;
 
-public class GUI {
+public class GUI implements ActionListener {
     JFrame frame = new JFrame("Tec_BoyJ");
     JPanel panel = new JPanel();
     Font font = new Font("Arial", Font.PLAIN, 24);
@@ -27,6 +27,7 @@ public class GUI {
     FractionButton b100d49 = new FractionButton(450, 100, 49);
     FractionButton b3d7 = new FractionButton(500, 3, 7);
     FractionButton b56d43 = new FractionButton(550, 56, 43);
+    FractionButton b1d14 = new FractionButton(600, 1, 14);
 
     JLabel labelGUI = new JLabel("GUI Interface");
     JButton GUI = new JButton("Python");
@@ -52,7 +53,7 @@ public class GUI {
 
         button.setBounds(380, 150, 240, 40);
         button.setFont(font);
-        button.addActionListener(actionListener);
+        button.addActionListener(this);
         panel.add(button);
 
         labelGUI.setBounds(90, 125, 200, 40);
@@ -62,12 +63,12 @@ public class GUI {
 
         GUI.setBounds(90, 175, 200, 40);
         GUI.setFont(font);
-        GUI.addActionListener(actionListener);
+        GUI.addActionListener(this);
         panel.add(GUI);
 
         stop.setBounds(710, 125, 200, 40);
         stop.setFont(font);
-        stop.addActionListener(actionListener);
+        stop.addActionListener(this);
         panel.add(stop);
 
 
@@ -79,29 +80,26 @@ public class GUI {
         frame.setVisible(true);
     }
 
-    ActionListener actionListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == GUI) {
-                if (GUISource == 0) {
-                    GUI.setText("<html>Desmos <font color='red'>(WIP!)</font></html>");
-                    GUISource++;
-                } else if (GUISource == 1) {
-                    GUI.setText("<html>Java <font color='red'>(WIP!)</font></html>");
-                    GUISource++;
-                } else {
-                    GUI.setText("Python");
-                    GUISource = 0;
-                }
-            } else if (e.getSource() == stop) {
-                System.exit(0);
-            } else if (e.getSource() == button) {
-                int x = Integer.parseInt(textField1.getText());
-                int y = Integer.parseInt(textField2.getText());
-                new MultiThreading(x, y);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == GUI) {
+            if (GUISource == 0) {
+                GUI.setText("<html>Desmos <font color='red'>(WIP!)</font></html>");
+                GUISource++;
+            } else if (GUISource == 1) {
+                GUI.setText("<html>Java <font color='red'>(WIP!)</font></html>");
+                GUISource++;
+            } else {
+                GUI.setText("Python");
+                GUISource = 0;
             }
+        } else if (e.getSource() == stop) System.exit(0);
+        else if (e.getSource() == button) {
+            int x = Integer.parseInt(textField1.getText());
+            int y = Integer.parseInt(textField2.getText());
+            new MultiThreading(x, y).start();
         }
-    };
+    }
 
     public class FractionButton extends JButton implements ActionListener {
         int num;
