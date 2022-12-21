@@ -22,12 +22,16 @@ public class Python {
             process.destroy();
         }));
     }
-
-    public static void python(int x, int y, int scale) throws IOException {
-        getPythonFile main = new getPythonFile("/Python/python.py");
+    public static void bigDeci(int x, int y, int scale) throws IOException {
         BigDecimal value = new BigDecimal(x).divide(new BigDecimal(y), scale, RoundingMode.DOWN);
-        String valueString = value.toString().replace(".", "");
-        String command = "python3 " + main.string + " " + valueString;
+        String string = value.toString().replace(".", "");
+        python(string);
+    }
+
+    public static void python(String string) throws IOException {
+        getPythonFile main = new getPythonFile("/Python/python.py");
+
+        String command = "python3 " + main.string + " " + string;
         //String command = "python3 " + file.getAbsolutePath() + " " + x + " " + y;
         if (GUISource == 0) command = command.replace("python.py", "pythonGUI.py");
         //System.out.println(command);

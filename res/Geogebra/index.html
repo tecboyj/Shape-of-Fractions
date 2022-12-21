@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geogebra Points Table</title>
+    <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+  </head>
+  <body>
+    <div id="ggb-points-table" style="width: 600px; height: 400px;"></div>
+    <script>
+        var ggbApp = new GGBApplet({
+            "filename": "points-table",
+            "showToolBar": false,
+            "showAlgebraInput": false,
+            "showMenuBar": false,
+            "showToolBarHelp": false,
+            "showResetIcon": false,
+            "enableLabelDrags": false,
+            "enableShiftDragZoom": false,
+            "enableRightClick": false,
+            "capturingThreshold": false,
+            "appName": "classic",
+            "width": 600,
+            "height": 400
+        }, true);
+        window.addEventListener("load", function(){
+            ggbApp.inject('ggb-points-table');
+        });
+    </script>
+  </body>
+</html>

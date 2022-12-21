@@ -4,12 +4,12 @@ import com.Tec_BoyJ.Python;
 
 import java.io.IOException;
 
-public class MultiThreading extends Thread {
+public class MultiThreadingBigDecimal extends Thread {
 
     int x;
     int y;
     int scale;
-    public MultiThreading(int x, int y, int scale) {
+    public MultiThreadingBigDecimal(int x, int y, int scale) {
         this.x = x;
         this.y = y;
         this.scale = scale;
@@ -18,7 +18,7 @@ public class MultiThreading extends Thread {
     @Override
     public void run() {
         try {
-            Python.python(this.x, this.y, this.scale);
+            Python.bigDeci(this.x, this.y, this.scale);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
