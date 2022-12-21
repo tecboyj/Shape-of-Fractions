@@ -17,21 +17,36 @@ public class GUI implements ActionListener {
     JTextField textField1 = new JTextField();
     JTextField textField2 = new JTextField();
 
-    JButton button = new JButton("GO!");
+    JLabel labelGUI = new JLabel("GUI Interface");
+    JButton GUI = new JButton("Python");
+    JButton stop = new JButton("EXIT");
 
-    FractionButton b1d23 = new FractionButton(200, 1, 23);
-    FractionButton b1d365 = new FractionButton(250, 1, 365);
-    FractionButton b1d47 = new FractionButton(300, 1, 47);
-    FractionButton b1d3 = new FractionButton(350, 1, 3);
+    JButton button = new JButton("GO!");
+    int yValue = 200;
+
+    FractionButton b1d3 = new FractionButton(yValue, 1, 3, 16);
+    FractionButton b1d6 = new FractionButton(yValue, 1, 6, 16);
+    FractionButton b1d7 = new FractionButton(yValue, 1, 7, 64);
+    FractionButton b1d9 = new FractionButton(yValue, 1, 9, 16);
+    FractionButton b1d12 = new FractionButton(yValue, 1, 12, 32);
+    FractionButton b1d13 = new FractionButton(yValue, 1, 13, 64);
+    FractionButton b1d14 = new FractionButton(yValue, 1, 14, 64);
+    FractionButton b1d17 = new FractionButton(yValue, 1, 17, 1000);
+    FractionButton b1d19 = new FractionButton(yValue, 1, 19, 1000);
+    FractionButton b1d21 = new FractionButton(yValue, 1, 21, 64);
+    FractionButton b1d23 = new FractionButton(yValue, 1, 23, 1000);
+    FractionButton b1d47 = new FractionButton(yValue, 1, 47, 1000);
+    FractionButton b1d49 = new FractionButton(yValue, 1, 49, 1000);
+    FractionButton b1d365 = new FractionButton(yValue, 1, 365, 64);
+
+
+    /*
     FractionButton b2d49 = new FractionButton(400, 2, 49);
     FractionButton b100d49 = new FractionButton(450, 100, 49);
     FractionButton b3d7 = new FractionButton(500, 3, 7);
     FractionButton b56d43 = new FractionButton(550, 56, 43);
-    FractionButton b1d14 = new FractionButton(600, 1, 14);
 
-    JLabel labelGUI = new JLabel("GUI Interface");
-    JButton GUI = new JButton("Python");
-    JButton stop = new JButton("EXIT");
+     */
     public GUI() {
         panel.setLayout(null);
         panel.setBackground(Color.GREEN);
@@ -71,7 +86,6 @@ public class GUI implements ActionListener {
         stop.addActionListener(this);
         panel.add(stop);
 
-
         frame.setSize(1000, 1000);
         panel.setSize(frame.getSize());
         frame.add(panel);
@@ -79,7 +93,6 @@ public class GUI implements ActionListener {
         frame.setResizable(false);
         frame.setVisible(true);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == GUI) {
@@ -97,27 +110,30 @@ public class GUI implements ActionListener {
         else if (e.getSource() == button) {
             int x = Integer.parseInt(textField1.getText());
             int y = Integer.parseInt(textField2.getText());
-            new MultiThreading(x, y).start();
+            new MultiThreading(x, y, 64).start();
         }
     }
-
-    public class FractionButton extends JButton implements ActionListener {
+    private void add50() {yValue += 50;}
+    private class FractionButton extends JButton implements ActionListener {
         int num;
         int den;
-        public FractionButton(int yValue, int num, int den) {
+        int scale;
+        public FractionButton(int yValue, int num, int den, int scale) {
             this.num = num;
             this.den = den;
+            this.scale = scale;
 
             this.setText(num + "/" + den);
             this.addActionListener(this);
             this.setBounds(380, yValue, 240, 40);
             this.setFont(new Font("Arial", Font.PLAIN, 24));
             panel.add(this);
+            GUI.this.add50();
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            new MultiThreading(num, den).start();
+            new MultiThreading(num, den, scale).start();
         }
     }
 }

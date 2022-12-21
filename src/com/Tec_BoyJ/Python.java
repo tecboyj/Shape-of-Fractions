@@ -4,10 +4,9 @@ import com.Tec_BoyJ.Graphing.JavaGraph;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Stack;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.*;
 
 import static com.Tec_BoyJ.Main.GUISource;
 
@@ -24,7 +23,16 @@ public class Python {
         }));
     }
 
-    public static void python(String command) throws IOException {
+    public static void python(int x, int y, int scale) throws IOException {
+        getPythonFile main = new getPythonFile("/Python/python.py");
+        BigDecimal value = new BigDecimal(x).divide(new BigDecimal(y), scale, RoundingMode.DOWN);
+        String valueString = value.toString().replace(".", "");
+        String command = "python3 " + main.string + " " + valueString;
+        //String command = "python3 " + file.getAbsolutePath() + " " + x + " " + y;
+        if (GUISource == 0) command = command.replace("python.py", "pythonGUI.py");
+        //System.out.println(command);
+
+
         python = new Python(command);
 
         Scanner scanner = new Scanner(python.process.getInputStream());
@@ -66,5 +74,12 @@ public class Python {
         FileWriter myWriter = new FileWriter("/home/jc515081/Coding/Java/ShapeOfFractions/res/arrays.txt");
         myWriter.write(Arrays.toString(arrX) + "\n" + Arrays.toString(arrY));
         myWriter.close();
+    }
+
+    private static class getPythonFile {
+        String string;
+        public getPythonFile(String python) {
+            this.string = Objects.requireNonNull(getClass().getResource(python)).getPath();
+        }
     }
 }

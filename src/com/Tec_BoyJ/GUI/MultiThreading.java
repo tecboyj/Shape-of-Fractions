@@ -1,6 +1,6 @@
 package com.Tec_BoyJ.GUI;
 
-import com.Tec_BoyJ.Main;
+import com.Tec_BoyJ.Python;
 
 import java.io.IOException;
 
@@ -8,15 +8,17 @@ public class MultiThreading extends Thread {
 
     int x;
     int y;
-    public MultiThreading(int x, int y) {
+    int scale;
+    public MultiThreading(int x, int y, int scale) {
         this.x = x;
         this.y = y;
+        this.scale = scale;
     }
 
     @Override
     public void run() {
         try {
-            Main.GUIInput(this.x, this.y);
+            Python.python(this.x, this.y, this.scale);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

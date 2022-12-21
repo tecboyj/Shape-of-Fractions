@@ -2,8 +2,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-from mpmath import mp
-from mpmath import mpf
+
 
 def draw_number(ax, n):
     """Plot a simple graph for a number n.
@@ -56,17 +55,7 @@ def draw_number(ax, n):
 if  __name__ == '__main__':
     ax = plt.subplot(111)
     coords = draw_number(ax, sys.argv[1])
-
-    '''
-    mp.dps = 64
-    ax = plt.subplot(111)
-    inputNum = int(sys.argv[1])
-    inputDenom = int(sys.argv[2])
-    input = mpf(inputNum/inputDenom)
-    print(input)
-    coords = draw_number(ax, input)
     print(coords)
-    '''
 
     x_sub = []
     y_sub = []
@@ -79,9 +68,3 @@ if  __name__ == '__main__':
 
     plt.plot(x, y)
     plt.show()
-
-    '''
-
-    fig, ax = plt.subplots()
-    plt.show()
-    '''
