@@ -53,5 +53,4 @@ def draw_number(ax, n):
     return coords
 
 if  __name__ == '__main__':
-    ax = plt.subplot(111)
-    print(draw_number(ax, sys.argv[1]))
+    print(draw_number(plt.subplot(111), sys.argv[1]))
