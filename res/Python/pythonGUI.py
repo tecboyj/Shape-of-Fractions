@@ -13,7 +13,8 @@ def draw_number(ax, n):
     n: the number to visualise; a decimal expansion of a fraction.
     """
     # Convert n into a string of digits; remove the decimal point.
-    digits = str(n).replace('.', '')
+    #digits = str(n).replace('.', '')
+    digits = n
     coords = [(0, 0)]   # The origin/start coord.
     heading = 0         # An 'easterly' heading.
     # Iterate over each digit...
@@ -53,6 +54,10 @@ def draw_number(ax, n):
     return coords
 
 if  __name__ == '__main__':
+    ax = plt.subplot(111)
+    coords = draw_number(ax, sys.argv[1])
+
+    '''
     mp.dps = 64
     ax = plt.subplot(111)
     inputNum = int(sys.argv[1])
@@ -61,7 +66,7 @@ if  __name__ == '__main__':
     print(input)
     coords = draw_number(ax, input)
     print(coords)
-    """
+    '''
 
     x_sub = []
     y_sub = []
@@ -74,7 +79,9 @@ if  __name__ == '__main__':
 
     plt.plot(x, y)
     plt.show()
-    """
+
+    '''
 
     fig, ax = plt.subplots()
     plt.show()
+    '''

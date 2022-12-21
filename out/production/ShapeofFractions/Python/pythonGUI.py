@@ -58,6 +58,7 @@ if  __name__ == '__main__':
     inputNum = int(sys.argv[1])
     inputDenom = int(sys.argv[2])
     input = mpf(inputNum/inputDenom)
+    print(input)
     coords = draw_number(ax, input)
     print(coords)
     """
