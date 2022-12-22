@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Geogebra Points Table</title>
+<head>
+    <title>GeoGebra API Example</title>
     <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
-  </head>
-  <body>
-    <div id="ggb-points-table" style="width: 600px; height: 400px;"></div>
+</head>
+<body>
+    <div id="applet_container" style="width: 800px; height: 600px;"></div>
     <script>
-        var ggbApp = new GGBApplet({
-            "filename": "points-table",
+        var applet = new GGBApplet({
+            "appName": "classic",
+            "width": 800,
+            "height": 600,
             "showToolBar": false,
             "showAlgebraInput": false,
             "showMenuBar": false,
-            "showToolBarHelp": false,
-            "showResetIcon": false,
-            "enableLabelDrags": false,
-            "enableShiftDragZoom": false,
-            "enableRightClick": false,
-            "capturingThreshold": false,
-            "appName": "classic",
-            "width": 600,
-            "height": 400
+            "enableLabelDrags": false
         }, true);
-        window.addEventListener("load", function(){
-            ggbApp.inject('ggb-points-table');
+        applet.inject('applet_container');
+        applet.setCoordSystem(-15, 15, -15, 15);
+
+        // add the points
+        var points = [
+            {x: -10, y: 10},
+            {x: 0, y: 8},
+            {x: 10, y: 6},
+            {x: -5, y: 0},
+            {x: 5, y: -5},
+            {x: 0, y: -10}
+        ];
+        points.forEach(function (point) {
+            applet.evalCommand('Point[' + point.x + ',' + point.y + ']');
         });
     </script>
-  </body>
+</body>
 </html>
