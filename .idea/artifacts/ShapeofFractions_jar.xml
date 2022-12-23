@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ShapeofFractions:jar">
+    <output-path>$PROJECT_DIR$/out/jar</output-path>
+    <root id="archive" name="ShapeofFractions.jar">
+      <element id="module-output" name="ShapeofFractions" />
+    </root>
+  </artifact>
+</component>
