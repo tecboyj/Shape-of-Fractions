@@ -8,12 +8,11 @@ import java.math.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.Tec_BoyJ.Main.GUISource;
-
-public class GUI implements ActionListener {
+public class ShapeOfFractions implements ActionListener {
     JFrame frame = new JFrame("Tec_BoyJ");
     static JPanel panel = new JPanel();
     Font font = new Font("Arial", Font.PLAIN, 24);
+    public static int GUISource = 0;
 
     static int inputScale = 1000;
     static int defaultHeight = 25;
@@ -38,7 +37,7 @@ public class GUI implements ActionListener {
     CustomClasses.OtherDecimal root2 = new CustomClasses.OtherDecimal(yValueOther, "Root 2", squareRoot(2, 0, 1));
     CustomClasses.OtherDecimal goldenRatio = new CustomClasses.OtherDecimal(yValueOther, "Golden Ratio", squareRoot(5, 1, 2));
 
-    public GUI() {
+    public ShapeOfFractions() {
         panel.setLayout(null);
         panel.setBackground(Color.GREEN);
         panel.setSize(1000, yValueFraction + 50);
@@ -134,7 +133,44 @@ public class GUI implements ActionListener {
                 new MultiThreadingBigDecimal(stack.pop(), stack.pop(), stack.pop()).start();
             }
         } else if (e.getSource() == save) {
-            new CustomClasses.popUp();
+            popUp();
         }
+    }
+
+    public void popUp() {
+        JFrame popUp = new JFrame();
+        JTextField textField = new JTextField();
+        textField.setBounds(100, 5, 100, 40);
+        CustomClasses.CustomButton button = new CustomClasses.CustomButton("OK", 100, 55, 100, 40);
+        button.addActionListener(e -> {
+            inputScale = Integer.parseInt(textField.getText());
+            try {
+                //File file = new File("config.txt");
+                //FileWriter fileWriter = new FileWriter(file);
+                FileWriter fileWriter = new FileWriter(Objects.requireNonNull(getClass().getResource("/config.txt")).getPath(), true);
+                fileWriter.write("\n" + textField1.getText() + "," + textField2.getText() + "," + inputScale);
+                fileWriter.close();
+                new CustomClasses.FractionButton(yValueFraction, Integer.parseInt(textField1.getText()), Integer.parseInt(textField2.getText()), inputScale);
+                panel.repaint();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            inputScale = 1000;
+            popUp.dispose();
+        });
+
+        popUp.add(textField);
+        popUp.add(button);
+
+        popUp.setSize(300, 100);
+        popUp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        popUp.setResizable(false);
+        popUp.setLocationRelativeTo(null);
+        popUp.setLayout(null);
+        popUp.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ShapeOfFractions();
     }
 }

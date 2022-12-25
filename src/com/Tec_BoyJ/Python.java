@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
-import static com.Tec_BoyJ.Main.GUISource;
+import static com.Tec_BoyJ.GUI.ShapeOfFractions.GUISource;
 
 public class Python {
     static Python python;
@@ -21,6 +21,14 @@ public class Python {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             process.destroy();
         }));
+    }
+
+    public static void mainInput(int x, int y, int scale) throws IOException, IOException {
+        BigDecimal value = new BigDecimal(x).divide(new BigDecimal(y), scale, RoundingMode.DOWN);
+        String string = value.toString().replace(".", "");
+        if (GUISource == 0) Python.python(string);
+        //if (GUISource == 1) ;
+        //if (GUISource == 2) ;
     }
 
     public static void python(String string) throws IOException {

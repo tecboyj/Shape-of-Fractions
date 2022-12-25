@@ -1,7 +1,6 @@
 package com.Tec_BoyJ.GUI;
 
-import com.Tec_BoyJ.Main;
-
+import com.Tec_BoyJ.Python;
 import java.io.IOException;
 
 public class MultiThreadingBigDecimal extends Thread {
@@ -18,7 +17,7 @@ public class MultiThreadingBigDecimal extends Thread {
     @Override
     public void run() {
         try {
-            Main.mainInput(this.x, this.y, this.scale);
+            Python.mainInput(this.x, this.y, this.scale);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

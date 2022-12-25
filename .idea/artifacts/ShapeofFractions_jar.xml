@@ -2,7 +2,7 @@
   <artifact type="jar" name="ShapeofFractions:jar">
     <output-path>$PROJECT_DIR$/out/jar</output-path>
     <root id="archive" name="ShapeofFractions.jar">
-      <element id="module-output" name="ShapeofFractions" />
+      <element id="module-output" name="Shape-of-Fractions" />
     </root>
   </artifact>
 </component>
