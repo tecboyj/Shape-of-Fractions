@@ -1,6 +1,4 @@
-package com.Tec_BoyJ.GUI;
-
-import com.Tec_BoyJ.Python;
+package com.Tec_BoyJ.Python;
 
 import java.io.IOException;
 

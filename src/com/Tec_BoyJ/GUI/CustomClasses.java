@@ -1,5 +1,8 @@
 package com.Tec_BoyJ.GUI;
 
+import com.Tec_BoyJ.Python.MultiThreadingBigDecimal;
+import com.Tec_BoyJ.Python.MultiThreadingOther;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

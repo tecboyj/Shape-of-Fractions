@@ -1,6 +1,5 @@
-package com.Tec_BoyJ.GUI;
+package com.Tec_BoyJ.Python;
 
-import com.Tec_BoyJ.Python;
 import java.io.IOException;
 
 public class MultiThreadingBigDecimal extends Thread {

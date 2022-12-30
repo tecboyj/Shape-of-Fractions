@@ -1,6 +1,4 @@
-package com.Tec_BoyJ;
-
-import com.Tec_BoyJ.Graphing.JavaGraph;
+package com.Tec_BoyJ.Python;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -75,7 +73,7 @@ public class Python {
             write(arrX, arrY);
             //new DesmosGraph();
         }
-        if (GUISource == 2) new JavaGraph();
+        //if (GUISource == 2) new JavaGraph();
     }
     public static void write(float[] arrX, float[] arrY) throws IOException {
         FileWriter myWriter = new FileWriter("/home/jc515081/Coding/Java/ShapeOfFractions/res/arrays.txt");

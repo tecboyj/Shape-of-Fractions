@@ -1,5 +1,7 @@
 package com.Tec_BoyJ.GUI;
 
+import com.Tec_BoyJ.Python.MultiThreadingBigDecimal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -9,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ShapeOfFractions implements ActionListener {
-    JFrame frame = new JFrame("Tec_BoyJ");
+    JFrame frame = new JFrame("Shape of Fractions");
     static JPanel panel = new JPanel();
     Font font = new Font("Arial", Font.PLAIN, 24);
     public static int GUISource = 0;
